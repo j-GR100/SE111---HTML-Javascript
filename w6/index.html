@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jankairy GR">
+    <meta name="description" content="W6 - Intro to JS">
+    <title>W6 | JavaScript Pay Calculator</title>  
+</head>
+<body>
+    <h1>W6 | JavaScript Pay Calculator</h1>
+   
+   <script>
+
+        var hours = Number(prompt(`Enter your hours worked for the 2 week period: `))
+        var rate = Number(prompt(`\nEnter your hourly rate: `))
+
+       
+        var gross = hours * rate 
+
+    
+        var tax = prompt(`For a 20% tax rate. \nEnter 'Y' below.`)
+
+
+        if(tax.toUpperCase() == 'Y')
+        {
+           
+            var taxAmount = gross * 0.2
+        }
+
+        var net = gross - taxAmount
+
+        console.log(`Gross Pay: $${gross.toFixed(2)}`)
+        console.log(`Tax Amount: $${taxAmount.toFixed(2)}`)
+        console.log(`Net Pay: $${net.toFixed(2)}`)
+
+       alert(`Your Pay Calculation: 
+            \nHOURS WORKED: ${hours}hrs   |    HOURLY RATE: $${rate.toFixed(2)}/hr
+            GROSS PAY: $${gross.toFixed(2)}
+            TAX AMOUNT: $${taxAmount.toFixed(2)}
+            NET PAY: $${net.toFixed(2)}`)
+        
+ 
+ </script>
+    
+ 
+ 
+    
+</body>
+</html>
