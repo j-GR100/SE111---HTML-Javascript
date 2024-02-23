@@ -105,73 +105,144 @@
     <!--IN-DOCUMENT JAVASCRIPT BELOW-->
     <script>
 
-       var body = document.querySelector('body')
+      
+        //selecting elements from the HTML document --> 'document' current HTML file 
+        //global variable: accessible everywhere after its creation
+        var body = document.querySelector(`body`) //selecting by HTML tag name
 
-       console.log(body)
+        console.log(body) //testing in the browser console -- TESTING
 
-       console.log(`The body's ID is: ${body.id}`)
+        //create a new variable to hold a new HTML element
+        //global variable newP
+        var newP = ``
+        newP += `<p>` //newP = newP + `<p>`
+        newP += `hello world! this content was added to the page using JavaScript!`
+        newP += `</p>`
 
-       body.id = `bodyId`
+        console.log(newP)
 
-       console.log(body)
-       console.log(`The body's ID is: ${body.id}`)
+        //adding new HTML element info (built in JS) to the *end* of the body element
+        //.innerHTML is an attribute all HTML elements with open and close tags
+        body.innerHTML += newP //body.innerHTML = body.innerHTML + newP
 
-       var hello = document.querySelector(`#hello`)
-       console.log(hello)
+        //accessing HTML attributes
+        body.id = `main-body`
+        console.log(body)
 
-       hello.id = `goodbye`
-       console.log(`The h2's ID is: ${hello.id}`)
 
-       hello.innerHTML += ` & goodbye`
+        //set up an actionable event so that when a button is clicked, information is written to the page. FIRST: add event listener for event (action)
+        //adding an event listern to the #enter-button at end of the mini form
+        document.querySelector(`#enter-button`).addEventListener(`click`, alertInfo)
 
-       
-       document.querySelector(`enter-button`).addEventListener(`click`, formConfirm)
-       function formConfirm()
-       {
-         //globel
-         console.log(hello)
-         var fname = document.getElementById(`first`)
+        //alertInfo() functiond definition is below - must include e/ev/event
+        //requires the 'e' parameter to hold event data
+        function alertInfo(e)
+        {
+            //local variables: their value only exists inside of alertInfo()
+            //these local variables will hold the VALUES from the mini form
+            var fname = document.querySelector(`#first`).value 
+            console.log(fname)
+            var lname = document.querySelector(`#last`).value
+            var age = document.querySelector(`#age`).value
 
-         //local
-         //console.log(fname)
+            console.log(fname, lname, age)
 
-         var fname = document.getElementById(`last`).value
-         var age = document.getElementById(`age`).value
-         console.log(fname, lname, age)
+            //numbers from input need to be cast! 
+            age = Number(age)
+            console.log(fname, lname, age)
 
-         var fullName = fname + ` `+ lname
+            //once values are stored, we can use them! 
+            var full = fname + ` ` + lname 
+            alert(`Hi there ${full}!`)
 
-         alert(`hello there, ${fullName}!`)
+            if(age >= 18) //must include parenthesis for JS conditions
+            {
+                alert(`you are old enough to vote!`)
+            }
+            else
+            {
+                alert(`you are too young to vote!`)
+            }
 
-         var info = document.querySelector(`#info`)
 
-         info.style.color = `blue`
+            //select the #hello element and add the user's name to it directly in the page
+            var hello = document.querySelector(`#hello`) 
+            //all of the #hello element is now stored in 'hello'
 
-         info.innerHTML += `<h4>Name:</h4>`
-         info.innerHTML +=`<p>`
-         info.innerHTML +=fullName
-         info.innerHTML +=`</p>`
+            //change the #hello text to add the user's name:
+            hello.innerHTML += ` ${full} !`
 
-         age = Number(age)
-         var activity = ``
+            //store HTML element #info into a var to use
+            var info = document.querySelector(`#info`)
 
-         if (age >= 21)
-         {
-            activity += `Drink!`
-         }
-         else if (age >= 18)
-         {
-            activity += `Vote!`
-         }
-         else if (age >= 16)
-         {
-            activity += `Drive!`
-         }
+            //calculate age in dog and cat years
+            var dog_age = (age * 7).toFixed(1)
+            var cat_age = (age * 4).toFixed(1)
 
-         info.innerHTML += `<br><b><h2>`
-         info.innerHTML += `<h2> ${activity} </h2>`
-          
-       }
+            //test values before writing to the HTML 
+            console.log(`Dog Age: ${dog_age} yrs\nCat Age: ${cat_age} yrs`)
+
+            //add the new age data to the #info element
+            info.innerHTML += `<p><br>Here is some info on the age you enetered :] <br> <br> YOUR AGE: ${age} <br> <br> Dog Age: ${dog_age} yrs <br> Cat Age: ${cat_age} yrs </p>`
+
+        }//END of alertInfo()
+
+        //global variables - can be used in any function AFTER this 
+        var me = document.querySelector(`#me`)
+        var you = document.querySelector(`#you`)
+
+        console.log(me)
+
+        //adding event listeners to non-button elements
+        me.addEventListener(`click`, clicked)
+
+        function clicked(e)
+        {
+            console.log(`clicked() reached`)
+            me.style.color = "red"
+        }
+
+        you.addEventListener(`click`, greenClick)
+        var clickCount = 0 
+
+        function greenClick(e)
+        {
+            console.log(`greenClicked() reached`)
+
+            clickCount += 1
+
+            var remainder = clickCount % 2
+
+            if(clickCount === 1)
+            {
+                you.style.color = "rgb(0, 255, 0)"
+                you.style.backgroundColor = `red`
+            }
+            else if(remainder === 0)
+            {
+                you.style.color = "rgb(0, 0, 0)"
+                you.style.backgroundColor = `white`
+            }
+            else
+            {
+                you.style.color = "rgb(0, 255, 0)"
+                you.style.backgroundColor = `black`
+            }
+            
+        }//END of greenClick()
+
+        //selecting another button on the page 
+        var button = document.querySelector(`#submit`)
+
+        //demoing an anonymous function - has no name, immediately writes the function definition - used when the function will not be reused outside of the one specific time 
+        button.addEventListener(`click`, function(event)
+        {
+            //check out the event parameter in the console
+            console.log(event)
+
+        }//END of anonymous function
+
+        )//END of button.addEventListener(
 
 
 
