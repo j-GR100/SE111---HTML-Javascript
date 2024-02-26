@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--FILL OUT THE MISSING INFO-->
-    <meta name="author" content="Jankairy GR">
+    <meta name="author" content="">
     <meta name="description" content="">
 
     <title>W7 | JS Pay Form</title>
@@ -102,54 +102,88 @@
     <input type="button" id="confirm-button" value="CONFIRM!">
 
      <!--IN-DOCUMENT JAVASCRIPT BELOW-->
-     <script>
+    <script>
         //write JS in here
-        var first = document.querySelector(`#first`)
 
-        //PART1-----selecting and storing HTML elements-
-        document.querySelector(`#enter-button`).addEventListener(`click`, formData)
+        //PART1-----selecting and storing HTML elements------------
+        /*
+            declare names for each of the following elements in the document: body, h1, input, div, input buttons
 
-        function formData(e)
-        {
-            var fname = first.value
-            var lname = document.querySelector(`#last`).value
-            var rate = document.querySelector(`#rate`).value
-            var hours = document.querySelector(`#hours`).value
-            
-            console.log(fname)
-            console.log(lname)
+            use EITHER .querySelector() OR .getElementById
+
+            console.log() all of these elements once complete
+
+        */
+         var first = document.querySelector(`#first`)
+         var last = document.querySelector(`#last`)
+         var hours = document.querySelector(`#hours`)
+         var rate = document.querySelector(`#rate`)
+
+            console.log(first)
+            console.log(last)
             console.log(rate)
             console.log(hours)
 
-            var full = fname + ` ` + lname
+
+        //PART2------adding event listeners------------------------
+        /*
+            add an event listener to the #enter-button that runs a function called "formData"
+
+            add an event listener to the #confirm-button that runs a function called "confirmForm"
+        */
+        document.querySelector(`#enter-button`).addEventListener(`click`, formData)
+
+        document.querySelector(`#confirm-button`).addEventListener(`click`, confirmData)
+
+
+        //PART3------building event functions----------------------
+        /*
+            formData() instructions: 
+                -store the input element values to descriptive names
+                -declare and create a "fullName" using the first and last values
+                -declare and create: grossPay, taxAmount, netPay
+                -console.log() the 4 values: fullName, grossPay, taxAmount, netPay
+                -write the information, with bolded labels in paragraph elements, to the #info div's innerHTML
+                -ensure all monetary values are displayed to the second decimal place (.toFixed(2))
+
+                    HINT EX: `<p><b>Full Name:</b> ${fullName}`
+
+                REMEMBER: form text field data is treated as a STRING so you will most likely need the Number() 
+
+
+            confirmForm() instructions:
+                -store the input element values to descriptive names
+                -declare and create a "fullName" using the first and last values
+                -declare and create: grossPay, taxAmount, netPay
+                -display all information (fullName, grossPay, taxAmount, netPay) to the user using ONE alert()
+                -each value should be on its own line (use `\n`) and ensure all monetary values are displayed to the second decimal place (.toFixed(2))
+                
+
+        */
+       function formData(event)
+       {
+            //EXTRA CREDIT---------+5pts-------------------------------
+            /*
+                Once your file is working, add ONE INSTRUCTION above this comment, but inside of the formData(), that makes sure if the user resubmits the form without reloading the page, only the new form info is displayed
+            */
+            var full = first.value + ` ` + last.value
 
             console.log(full)
 
-            hours = Number(hours)
-            rate = Number(rate)
+            hours = Number(hours.value)
+            rate = Number(rate.value)
 
             var gross = hours * rate 
             var taxAmount = gross * .2
             var net = gross - taxAmount
 
-            console.log(`${gross.toFixed(2)}\n${taxAmount.toFixed(2)}\n${taxAmount.toFixed(2)}`)
+            console.log(`${full.toFixed(2)}\n${gross.toFixed(2)}\n${taxAmount.toFixed(2)}\n${net.toFixed(2)}`)
 
-            
-            var review = `${full}<br>${hours}<br>${rate}`
-          
-
-            var info = document.querySelector(`#info`)
-            info.innerHTML = info
-            info.innerHTML = `GROSS: $${gross.toFixed(2)}<br>TAX AMOUNT: $${taxAmount.toFixed(2)}<br>NET PAY: $${net.toFixed(2)}`
-
-        }
+       }//formData()
 
 
-       document.querySelector(`#confirm-button`).addEventListener(`click`, confirmData)
-
-       function confirmData(e)
+       function confirmData(event)
        {
-        alert(`${full}\nHOURS: ${hours}\nRATE: $${rate.toFixed(2)}\n\nGROSS PAY: $${gross.toFixed(2)}\nTAX AMOUNT: $${taxAmount.toFixed(2)}\nNET PAY: $${net.toFixed(2)}`)
 
        }//confirmData()
 
