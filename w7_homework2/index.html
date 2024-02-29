@@ -179,11 +179,14 @@
 
             console.log(`${full.toFixed(2)}\n${gross.toFixed(2)}\n${taxAmount.toFixed(2)}\n${net.toFixed(2)}`)
 
+            info.innerHTML += `<p><br>Here is some info you enetered<br> <b>Full Name:${full}</b> <b>Gross:${gross}</b> <b>Tax Amount:${taxAmount}</b> <b>Net:${net}</b></p>`
+
        }//formData()
 
 
        function confirmData(event)
        {
+        alert(`Full Name: ${full}\nHOURS: ${hours}\nRATE: $${rate.toFixed(2)}\n\nGROSS PAY: $${gross.toFixed(2)}\nTAX AMOUNT: $${taxAmount.toFixed(2)}\nNET PAY: $${net.toFixed(2)}`)
 
        }//confirmData()
 
