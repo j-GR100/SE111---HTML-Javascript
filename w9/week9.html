@@ -22,6 +22,33 @@
 		{first:"Buzz", last:"Lightyear", credit:"Toy Story" },
 		{first:"Marion", last:"Cobretti", credit:"Cobra" }
 	]
+	console.log(people)
+
+	var body = document.querySelector(`body`)
+
+	console.log(body)
+
+	for (let i = 0; i < people.length; i++)
+	{
+		var tempDiv = document.createElement(`div`)
+
+		tempDiv.setAttribute(`id`, people[i].first)
+        tempDiv.setAttribute(`class`, `border`)
+
+		for (let key in people[i])
+		{
+			var p = document.createElement(`p`)
+            var text = document.createTextNode(people[i][key])
+
+            p.appendChild(text)
+            tempDiv.appendChild(p)
+		}
+		
+		body.appendChild(tempDiv)
+	}
+
+
+       
 	
 </script>
 
