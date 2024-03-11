@@ -36,19 +36,17 @@
     <script>
 	
 		//Store the elements (tags) in variables
-		var first = document.getElementById(`#first`)
-        var last = document.getElementById(`#last`)
+		var first = document.getElementById(`first`)
+        var last = document.getElementById(`last`)
 
 		var submit = document.querySelector(`#button`)
 
-		var output = document.querySelector(`#output`)
+		var outputDiv = document.querySelector(`#output`)
 
 
 		//Make an array to store the people
 		var people = [
-            `Mike`,
-            `Scott`,
-            `Matt`,
+
         ]
 		console.log(people) 
 	
@@ -82,24 +80,17 @@
 				//2. last: will be a string that uses the last Input's value
 
             var person = {
-				first: `Mike`,
-				last: `Kim`,
+				first: first.value,
+				last: last.value
 
             }//end of person object
 
-			var person = {
-				first: `Scott`,
-				last: `Brown`,
-			}
 
-			var person = {
-				first: `Matt`,
-				last: `Gomez`,
-			}
 
 
 			//Add the person object into the people array by using the .push() array method.
-			people.push(`Jake`)
+			//people.push(`Jake`)
+			people.push(person)
 			console.log(`Now, the 'people' array has: ${people.length} values\n${people}`)
 
 
@@ -118,14 +109,14 @@
 			}//end of bubble sort algorithm!
 
 			//console.log the people array to check that the people array is formatted correctly and is populated with the correct objects
-			console.log(`Array: ${people}`)
+			console.log(people)
 
 			//create a variable called 'output' that has an empty string value stored to 
 			var output = ``
 
 
 			//Loop through the objects in the people array
-			for(let i=0; i < people.length-1; i++)
+			for(let i=0; i < people.length; i++)
             {
 
 				//Loop through each property in the object
@@ -147,7 +138,7 @@
 
 				//log the output string
 				//replace the outputDiv's inner HTML with the output string
-				output.innerHTML = output
+				outputDiv.innerHTML = output
 
 				
 
